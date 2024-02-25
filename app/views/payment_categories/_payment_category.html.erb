@@ -1,0 +1,8 @@
+<li id="<% dom_id(payment_category, :li) %>">
+  <%= turbo_frame_tag payment_category do %>
+    <%= link_to payment_category.name,
+                edit_payment_category_path(payment_category),
+                class: "flex items-center h-12 px-4 rounded hover:ring"
+    %>
+  <% end %>
+</li>

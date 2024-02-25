@@ -3,14 +3,14 @@
     Categorias
   </h1>
 
-  <ul class="flex flex-col gap-2">
-    <% if categories.empty? %>
+  <ul class="flex flex-col">
+    <% if payment_categories.empty? %>
       <span class="text-gray-400">
         Nenhuma categoria cadastrada
       </span>
     <% else %>
-      <% categories.each do |category| %>
-        <li><%= category.name %></li>
+      <% payment_categories.each do |payment_category| %>
+        <%= render partial: "payment_category", locals: { payment_category: payment_category } %>
       <% end %>
     <% end %>
   </ul>

@@ -1,0 +1,7 @@
+<%= turbo_stream.append("payment_category_form") do %>
+  <h1 class="text-xl font-bold">
+    Nova Categoria
+  </h1>
+
+  <%= render partial: "form", locals: { payment_category: @payment_category } %>
+<% end %>

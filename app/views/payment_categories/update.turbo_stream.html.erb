@@ -1,0 +1,13 @@
+<% if @payment_category.errors.any? %>
+  <%= turbo_stream.replace("payment_category_form") do %>
+    <h1 class="text-xl font-bold">
+      Editar Categoria
+    </h1>
+
+    <%= render partial: "form", locals: { payment_category: @payment_category } %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.replace(dom_id(@payment_category, :li)) do %>
+    <%= render partial: "payment_category", locals: { payment_category: payment_category } %>
+  <% end %>
+<% end %>
