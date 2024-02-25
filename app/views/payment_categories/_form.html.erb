@@ -1,24 +1,22 @@
-<%= form_with(model: payment_category, html: { :id => dom_id(payment_category, :form) }) do |payment_category_form| %>
-  <div class="flex flex-col gap-4">
-    <div class="flex flex-col gap-1">
-      <%= payment_category_form.label "Nome" %>
+<div class="flex flex-col gap-6">
+  <h1 class="text-xl font-bold">
+    Nova Categoria
+  </h1>
 
-      <%= payment_category_form.text_field :name,
-                          class: "w-72 rounded",
-                          id: "category-name-field",
-                          placeholder: "Ex.: Serviços"
-      %>
+  <%= form_with(model: payment_category, html: { :id => dom_id(payment_category, :form) }) do |form| %>
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-1">
+        <%= form.label "Nome" %>
+        <%= form.text_field :name, id: "category-name-field", placeholder: "Ex.: Serviços", class: "w-72 rounded" %>
 
-      <% payment_category.errors.full_messages_for(:name).each do |message| %>
-        <span class="text-red-300">
-          <%= message %>
-        </span>
-      <% end %>
+        <% if payment_category.errors.any? %>
+          <span class="text-red-500">
+            <%= payment_category.errors.full_messages_for(:name).join(',') %>
+          </span>
+        <% end %>
+      </div>
+
+      <%= form.submit "Salvar", title: "Salvar categoria", class: "bg-[#3155d2] disabled:bg-blue-100 text-white disabled:text-black cursor-pointer disabled:cursor-not-allowed h-12 rounded w-72" %>
     </div>
-
-    <%= payment_category_form.submit "Salvar",
-                    title: "Cadastrar nova categoria",
-                    class: "bg-[#3155d2] disabled:bg-blue-100 text-white disabled:text-black cursor-pointer disabled:cursor-not-allowed h-12 rounded w-72"
-    %>
-  </div>
-<% end %>
+  <% end %>
+</div>

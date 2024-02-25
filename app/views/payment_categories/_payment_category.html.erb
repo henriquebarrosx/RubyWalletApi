@@ -1,8 +1,12 @@
-<li id="<% dom_id(payment_category, :li) %>">
+<li id="<%= dom_id(payment_category, :li) %>">
   <%= turbo_frame_tag payment_category do %>
-    <%= link_to payment_category.name,
-                edit_payment_category_path(payment_category),
-                class: "flex items-center h-12 px-4 rounded hover:ring"
-    %>
+    <div class="flex items-center justify-between gap-4">
+      <span><%= payment_category.name %></span>
+
+      <div class="flex items-center gap-4">
+        <%= link_to "Editar", edit_payment_category_path(payment_category.id), method: :delete %>
+        <%= button_to "Excluir", payment_category_path(payment_category.id), method: :delete %>
+      </div>
+    </div>
   <% end %>
 </li>

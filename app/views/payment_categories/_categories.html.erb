@@ -1,17 +1,19 @@
-<div class="flex flex-col gap-8 w-full">
-  <h1 class="text-xl font-bold">
-    Categorias
-  </h1>
+<%= turbo_frame_tag("payment_categories_frame") do %>
+  <div class="flex flex-col gap-8 w-full">
+    <h1 class="text-xl font-bold">
+      Categorias
+    </h1>
 
-  <ul class="flex flex-col">
-    <% if payment_categories.empty? %>
-      <span class="text-gray-400">
-        Nenhuma categoria cadastrada
-      </span>
-    <% else %>
-      <% payment_categories.each do |payment_category| %>
-        <%= render partial: "payment_category", locals: { payment_category: payment_category } %>
+    <ul id="payments_categories" class="flex flex-col gap-6">
+      <% if payment_categories.empty? %>
+        <span class="text-gray-400">
+          Nenhuma categoria cadastrada
+        </span>
+      <% else %>
+        <% payment_categories.each do |payment_category| %>
+          <%= render partial: "payment_category", locals: { payment_category: payment_category } %>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
-</div>
+    </ul>
+  </div>
+<% end %>

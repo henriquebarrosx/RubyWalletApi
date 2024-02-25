@@ -1,0 +1,20 @@
+<%= turbo_frame_tag @payment_category do %>
+  <%= form_with(model: @payment_category, html: { :id => dom_id(@payment_category, :form) }) do |form| %>
+    <div class="flex gap-4">
+      <div class="flex flex-col gap-1 w-full">
+        <%= form.text_field :name, id: "category-name-field", placeholder: "Ex.: Serviços", autofocus: 'true', class: "rounded" %>
+
+        <% if @payment_category.errors.any? %>
+          <span class="text-red-500">
+            <%= @payment_category.errors.full_messages_for(:name).join(',') %>
+          </span>
+        <% end %>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <%= link_to "Cancelar", payment_categories_path, class: "flex justify-center items-center cursor-pointer h-8 rounded h-8" %>
+        <%= form.submit "Salvar", title: "Salvar categoria", class: "bg-[#3155d2] disabled:bg-blue-100 text-white disabled:text-black cursor-pointer disabled:cursor-not-allowed h-10 px-4 rounded" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
