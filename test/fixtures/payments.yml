@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1.5
+  description: MyText
+  payed: false
+  deadline_at: 2024-03-03
+  is_expense: false
+  payment_category: one
+  payment_frequency: one
+
+two:
+  amount: 1.5
+  description: MyText
+  payed: false
+  deadline_at: 2024-03-03
+  is_expense: false
+  payment_category: two
+  payment_frequency: two

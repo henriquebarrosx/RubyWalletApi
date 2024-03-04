@@ -1,13 +1,13 @@
 <% if @payment_category.errors.any? %>
-  <%= turbo_stream.update "payment_category_form_frame" do %>
+  <%= turbo_stream.update "payment_category_form_tag" do %>
     <%= render partial: "form", locals: { payment_category: @payment_category } %>
   <% end %>
 <% else %>
-  <%= turbo_stream.update "payment_category_form_frame" do %>
+  <%= turbo_stream.update "payment_category_form_tag" do %>
     <%= render partial: "form", locals: { payment_category: PaymentCategory.new } %>
   <% end %>
 
-  <%= turbo_stream.replace "payment_categories_frame" do %>
+  <%= turbo_stream.replace "payment_categories_tag" do %>
     <%= render partial: "categories", locals: { payment_categories: PaymentCategory.all } %>
   <% end %>
 <% end %>

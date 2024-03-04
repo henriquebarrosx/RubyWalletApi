@@ -1,22 +1,16 @@
 <div class="flex flex-col gap-6">
-  <h1 class="text-xl font-bold">
-    Nova Categoria
-  </h1>
-
   <%= form_with(model: payment_category, html: { :id => dom_id(payment_category, :form) }) do |form| %>
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-col gap-1">
-        <%= form.label "Nome" %>
-        <%= form.text_field :name, id: "category-name-field", placeholder: "Ex.: Serviços", class: "w-72 rounded" %>
-
-        <% if payment_category.errors.any? %>
-          <span class="text-red-500">
-            <%= payment_category.errors.full_messages_for(:name).join(',') %>
-          </span>
-        <% end %>
+    <div class="flex flex-col gap-2">
+      <div class="flex gap-4">
+        <%= form.text_field :name, placeholder: "Ex.: Serviços", class: "w-full h-12 rounded" %>
+        <%= form.submit "Cadastrar", title: "Salvar categoria", class: "bg-[#3155d2] hover:opacity-50 ease-in-out duration-200 disabled:bg-blue-100 text-white disabled:text-black cursor-pointer disabled:cursor-not-allowed h-12 rounded w-32" %>
       </div>
 
-      <%= form.submit "Salvar", title: "Salvar categoria", class: "bg-[#3155d2] disabled:bg-blue-100 text-white disabled:text-black cursor-pointer disabled:cursor-not-allowed h-12 rounded w-72" %>
+      <% if payment_category.errors.any? %>
+        <span class="text-red-500">
+          <%= payment_category.errors.full_messages_for(:name).join(',') %>
+        </span>
+      <% end %>
     </div>
   <% end %>
 </div>

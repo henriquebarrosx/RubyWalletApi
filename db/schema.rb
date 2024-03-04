@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_24_181110) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_03_182145) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,4 +20,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_24_181110) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "payment_frequencies", force: :cascade do |t|
+    t.integer "times"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.float "amount"
+    t.text "description"
+    t.boolean "payed"
+    t.date "deadline_at"
+    t.boolean "is_expense"
+    t.bigint "payment_category_id", null: false
+    t.bigint "payment_frequency_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_category_id"], name: "index_payments_on_payment_category_id"
+    t.index ["payment_frequency_id"], name: "index_payments_on_payment_frequency_id"
+  end
+
+  add_foreign_key "payments", "payment_categories"
+  add_foreign_key "payments", "payment_frequencies"
 end

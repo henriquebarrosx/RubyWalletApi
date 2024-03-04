@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  resources :payment_categories, path: '/pagamentos/categorias'
+  resources :payments, path: '/pagamentos', except: [:show]
+  resources :payment_categories, path: '/categorias', except: [:show]
 end
